@@ -15,8 +15,14 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # This job is now linked to an environment
+  deploy:
+    # 👇 ESTA ES LA PARTE QUE AÑADES
+    environment: 
+      name: production # Nombre del entorno que debes crear en el repo
+      url: https://mi-sitio-web.com # Opcional: URL que aparecerá en los despliegues
+    # 👆 FIN DE LA PARTE AÑADIDA
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -27,7 +33,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: echo Deploying to the 'production' environment!
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
